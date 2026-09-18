@@ -9,16 +9,16 @@ clock = pygame.time.Clock()
 
 center = np.array([W / 2, H / 2])
 
-# Radius of circular boundary
+
 R = 250
 
-# Radius of each ball
+
 r = 12
 
-# Gravity
+
 g = np.array([0, 500])
 
-# Number of balls
+
 N = 8
 
 # Position of all balls
@@ -54,30 +54,22 @@ while running:
 
     dt = clock.tick(60) / 1000
 
-    # -------------------------
-    # CHECK EVENTS
-    # -------------------------
+   
 
     for event in pygame.event.get():
 
         if event.type == pygame.QUIT:
             running = False
 
-    # -------------------------
-    # GRAVITY
-    # -------------------------
+
 
     vel += g * dt
 
-    # -------------------------
-    # MOVE ALL BALLS
-    # -------------------------
+
 
     pos += vel * dt
 
-    # -------------------------
-    # BOUNDARY COLLISION
-    # -------------------------
+
 
     for i in range(N):
 
@@ -98,15 +90,13 @@ while running:
             # Bounce off boundary
             vel[i] = vel[i] - 2 * np.dot(vel[i], n) * n
 
-    # -------------------------
-    # BALL-BALL COLLISION
-    # -------------------------
+
 
     for i in range(N):
 
         for j in range(i + 1, N):
 
-            # Vector from ball i to ball j
+           
             d = pos[j] - pos[i]
 
             distance = np.linalg.norm(d)
@@ -136,9 +126,7 @@ while running:
                 pos[i] -= n * (overlap / 2)
                 pos[j] += n * (overlap / 2)
 
-    # -------------------------
-    # DRAW
-    # -------------------------
+
 
     screen.fill("black")
 
