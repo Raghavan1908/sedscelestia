@@ -110,7 +110,7 @@ while running:
                 # Relative velocity
                 relative_velocity = vel[j] - vel[i]
 
-                # Only collide if moving towards each other
+                
                 if np.dot(relative_velocity, n) < 0:
 
                     # Elastic collision
@@ -119,10 +119,10 @@ while running:
                     vel[i] += impulse * n
                     vel[j] -= impulse * n
 
-                # Calculate overlap
+               
                 overlap = 2 * r - distance
 
-                # Push balls apart
+                
                 pos[i] -= n * (overlap / 2)
                 pos[j] += n * (overlap / 2)
 
@@ -130,7 +130,7 @@ while running:
 
     screen.fill("black")
 
-    # Draw circular boundary
+    
     pygame.draw.circle(
         screen,
         "white",
@@ -139,7 +139,7 @@ while running:
         2
     )
 
-    # Draw balls
+    
     for i in range(N):
 
         pygame.draw.circle(
